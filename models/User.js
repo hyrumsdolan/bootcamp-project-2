@@ -35,14 +35,6 @@ User.init(
                 len: [8],
             },
         },
-        height: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        weight: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
     },
     {
         hooks: {

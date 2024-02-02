@@ -2,15 +2,11 @@
     {
         "name": "John Doe",
         "email": "john@example.com",
-        "password": "password123",
-        "height": 70,
-        "weight": 160
+        "password": "password123"
     },
     {
         "name": "Jane Smith",
         "email": "jane@example.com",
-        "password": "securepass",
-        "height": 65,
-        "weight": 130
+        "password": "securepass"
     }
 ]
