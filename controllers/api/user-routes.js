@@ -1,4 +1,3 @@
-// WARNING: Copied from Student Activites, should be looked through before using
 
 const express = require('express');
 const router = express.Router();
