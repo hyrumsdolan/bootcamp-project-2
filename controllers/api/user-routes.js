@@ -54,8 +54,6 @@ router.post("/register", async (req, res) => {
       name: req.body.name, // Adding name to the user creation
       email: req.body.email, // Adding email to the user creation
       password: hashedPassword, // Storing the hashed password
-      height: req.body.height, // Adding height to the user creation
-      weight: req.body.weight // Adding weight to the user creation
     });
 
     // Save session and log the user in after successful registration
