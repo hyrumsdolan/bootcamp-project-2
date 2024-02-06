@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class Set extends Model { }
+class Set extends Model {}
 
 Set.init(
     {
@@ -23,17 +23,25 @@ Set.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'workout',
-                key: 'id',
+                model: "workout",
+                key: "id",
             },
         },
-    },
+        user_id: { // Corrected placement
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "user",
+                key: "id",
+            },
+        }
+    }, // Removed extra comma
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'set',
+        modelName: "set",
     }
 );
 
