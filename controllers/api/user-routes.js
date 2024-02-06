@@ -40,20 +40,23 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
+    // Check if the email is already in use
     const userExists = await User.findOne({ where: { email: req.body.email } });
     if (userExists) {
       return res.status(400).json({ message: "Email already in use!" });
     }
 
     // Hash the password before saving it to the database
-    const hashedPassword = await bcrypt.hash(req.body.password, 10); // Adjust salt rounds as necessary
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+    // Create a new user with the hashed password and additional information
     const newUser = await User.create({
-      email: req.body.email,
+      name: req.body.name, // Adding name to the user creation
+      email: req.body.email, // Adding email to the user creation
       password: hashedPassword, // Storing the hashed password
     });
 
-    
+    // Save session and log the user in after successful registration
     req.session.save(() => {
       req.session.user_id = newUser.id;
       req.session.logged_in = true; // Logs the user in immediately after registration
@@ -63,6 +66,7 @@ router.post("/register", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
