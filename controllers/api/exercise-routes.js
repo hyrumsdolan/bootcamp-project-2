@@ -1,40 +1,51 @@
-// Import necessary modules
 const express = require('express');
 const router = express.Router();
-const request = require('request'); // Ensure you have 'request' installed via npm
+const request = require('request-promise'); // Switched to 'request-promise' for easier async handling
+const asyncHandler = require('express-async-handler'); // For handling asynchronous routes
 
-// Define your route
+// Define your route using asyncHandler for async error handling
+router.get('/getWorkout', asyncHandler(async (req, res) => {
+  const muscle = req.query.muscle || 'legs'; // Default to 'biceps' if not specified
 
-router.get('/getRandom', (req, res) => {
-  // return a working message
-  res.send('This is the exercise route!');
-});
+  // Define muscle groups for pull, push, and legs
+  const muscleGroups = {
+    pull: ['biceps', 'forearms', 'lats', 'middle_back', 'traps'],
+    push: ['chest', 'shoulders', 'triceps'],
+    legs: ['calves', 'glutes', 'hamstrings', 'quadriceps']
+  };
 
-// router.get('/exercise', (req, res) => {
-//   // You could allow clients to specify the muscle as a query parameter
-//   const muscle = req.query.muscle || 'biceps'; // Default to 'biceps' if not specified
+  const randomWorkouts = [];
 
-//   // Set up the options for the third-party API request
-//   const options = {
-//     url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + muscle,
-//     headers: {
-//       'X-Api-Key': process.env.API_KEY // Replace 'YOUR_API_KEY' with your actual API key
-//     }
-//   };
+  if (['pull', 'push', 'legs'].includes(muscle.toLowerCase())) {
+    // Fetch workouts for each muscle in the group
+    for (const m of muscleGroups[muscle.toLowerCase()]) {
+      const options = {
+        url: `https://api.api-ninjas.com/v1/exercises?muscle=${m}`,
+        headers: {
+          'X-Api-Key': process.env.API_KEY // Ensure you have your API key here
+        },
+        json: true // Automatically parses the JSON string in the response
+      };
 
-//   // Make the request to the third-party API
-//   request.get(options, (error, response, body) => {
-//     if (error) {
-//       console.error('Request failed:', error);
-//       res.status(500).send('Internal Server Error');
-//     } else if (response.statusCode != 200) {
-//       console.error('Error:', response.statusCode, body.toString('utf8'));
-//       res.status(response.statusCode).send(body.toString('utf8'));
-//     } else {
-//       // Assuming the body is in JSON format; if not, you may need to parse it
-//       res.json(JSON.parse(body));
-//     }
-//   });
-// });
+      try {
+        const response = await request.get(options);
+        if (response && response.length > 0) {
+          // Pick a random workout from the response
+          const randomIndex = Math.floor(Math.random() * response.length);
+          randomWorkouts.push(response[randomIndex]);
+        }
+      } catch (error) {
+        console.error(`Failed to fetch workouts for muscle ${m}:`, error);
+        // Optionally handle errors, e.g., continue to the next muscle or send an error response
+      }
+    }
+
+    // Send the selected random workouts back
+    res.json(randomWorkouts);
+  } else {
+    // If the muscle doesn't match "pull", "push", or "legs", handle it accordingly
+    res.status(400).send('Invalid muscle group specified');
+  }
+}));
 
 module.exports = router;
