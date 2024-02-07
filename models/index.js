@@ -2,11 +2,6 @@
 const User = require("./User");
 const Workout = require("./Workout");
 const Set = require("./Set");
-// Defining relationships between models
-User.hasMany(Workout, { foreignKey: 'user_id' }); // A User can have many Workouts. 'user_id' is the foreign key in the Workout model that references the User.
-Workout.belongsTo(User, { foreignKey: 'user_id' }); // A Workout belongs to a single User, linked by 'user_id'.
-
-
 
 
 // Adjusting according to your new structure
