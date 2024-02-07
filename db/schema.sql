@@ -1,5 +1,5 @@
--- Create the fitness database
+DROP DATABASE IF EXISTS fitness_db;
 CREATE DATABASE IF NOT EXISTS fitness_db;
 
--- Use the fitness database
+
 USE fitness_db;

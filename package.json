@@ -8,7 +8,7 @@
     "start": "node server.js",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "dbsetup": "node db/schema.js && node db/seed.js"
+    "dbsetup": "node db/schema.sql && node db/seed.js"
   },
   "keywords": [],
   "author": "",

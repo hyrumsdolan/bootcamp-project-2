@@ -1,32 +1,28 @@
-// WARNING: Copied from Student Activites, should be looked through before using
 
-const router = require("express").Router();
-const { User } = require("../../models");
+const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcrypt');
+const { User } = require("../../models");
 
 router.post("/login", async (req, res) => {
   try {
-    // looks to see if the entered email exist in the database
+    // Looks to see if the entered email exists in the database
     const userData = await User.findOne({ where: { email: req.body.email } });
-
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+      res.status(400).json({ message: 'Incorrect email!' });
       return;
     }
-
-    // checks to see if the entered password matches the password in the database
+  
+    // Checks to see if the entered password matches the password in the database
+    // using the checkPassword method defined in the User model.
     const validPassword = await userData.checkPassword(req.body.password);
-
+    console.log(validPassword);
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+      res.status(400).json({ message: "Incorrect password" });
       return;
     }
 
-    // creates a new session for the user with the logged in flag
+    // Creates a new session for the user with the logged in flag
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -34,35 +30,39 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error("Login Error:", err);
+    res.status(500).json(err);
   }
 });
 
+
 router.post("/register", async (req, res) => {
   try {
+    // Check if the email is already in use
     const userExists = await User.findOne({ where: { email: req.body.email } });
     if (userExists) {
       return res.status(400).json({ message: "Email already in use!" });
     }
 
-    // Hash the password before saving it to the database
-    const hashedPassword = await bcrypt.hash(req.body.password, 10); // Adjust salt rounds as necessary
-
+    // Create a new user with the hashed password and additional information
     const newUser = await User.create({
-      email: req.body.email,
-      password: hashedPassword, // Storing the hashed password
+      name: req.body.name, // Adding name to the user creation
+      email: req.body.email, // Adding email to the user creation
+      password: req.body.password, // Storing the hashed password
     });
 
-    
+    // Save session and log the user in after successful registration
     req.session.save(() => {
       req.session.user_id = newUser.id;
       req.session.logged_in = true; // Logs the user in immediately after registration
       res.json({ user: newUser, message: "Account creation successful! You are now logged in." });
     });
   } catch (err) {
+    console.error("Registration Error:", err);
     res.status(500).json(err);
-  }
+  }  
 });
+
 
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {

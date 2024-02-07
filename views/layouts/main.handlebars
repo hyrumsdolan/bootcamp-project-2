@@ -1,11 +1,22 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>My Handlebars App</title>
-</head>
-<body>
-    {{{body}}}
-</body>
-<script src="/js/handlebars.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>{{pageTitle}}</h1>
+    </header>
+
+    <main>
+      {{{body}}}
+    </main>
+
+    <footer>
+      <p>&copy; {{currentYear}} Fitness Tracker</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
 </html>
