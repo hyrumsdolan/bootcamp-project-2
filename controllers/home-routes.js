@@ -39,37 +39,37 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/selection', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
+  // if (!req.session.logged_in) {
+  //   res.redirect('/login');
+  //   return;
+  // }
 
   res.render('selection');
 });
 
 router.get('/fullWorkout', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
+  // if (!req.session.logged_in) {
+  //   res.redirect('/login');
+  //   return;
+  // }
 
-  res.render('workout');
+  res.render('fullWorkout');
 });
 
-router.get('singleWorkout', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
+router.get('/singleWorkout', (req, res) => {
+  // if (!req.session.logged_in) {
+  //   res.redirect('/login');
+  //   return;
+  // }
 
   res.render('singleWorkout');
 });
 
 router.get('/completedWorkout', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
+  // if (!req.session.logged_in) {
+  //   res.redirect('/login');
+  //   return;
+  // }
 
   res.render('completedWorkout');
 });
