@@ -11,37 +11,35 @@
 <body>
 
     <div class="container">
-        <div class="exercise-description">
+        <div id="workout-name-and-description" class="exercise-description">
             <h2>Legs</h2>
             <p>Instructions excercise here..</p>
         </div>
         <div class="sets">
-            <div class="set"><span>Set 1:</span> <input type="number" placeholder="reps"> <input type="number"
+            <div id="set1" class="set"><span>Set 1:</span> <input type="number" placeholder="reps"> <input type="number"
                     placeholder="weight"></div>
-            <div class="set"><span>Set 2:</span> <input type="number" placeholder="reps"> <input type="number"
+            <div id="set2" class="set"><span>Set 2:</span> <input type="number" placeholder="reps"> <input type="number"
                     placeholder="weight"></div>
-            <div class="set"><span>Set 3:</span> <input type="number" placeholder="reps"> <input type="number"
+            <div id="set3" class="set"><span>Set 3:</span> <input type="number" placeholder="reps"> <input type="number"
                     placeholder="weight"></div>
-            <div class="set"><span>Set 4:</span> <input type="number" placeholder="reps"> <input type="number"
+            <div id="set4" class="set"><span>Set 4:</span> <input type="number" placeholder="reps"> <input type="number"
                     placeholder="weight"></div>
-            <div class="set"><span>Set 5:</span> <input type="number" placeholder="reps"> <input type="number"
+            <div id="set5" class="set"><span>Set 5:</span> <input type="number" placeholder="reps"> <input type="number"
                     placeholder="weight"></div>
         </div>
-        <button class="finish-btn">Finish Workout</button>
+        <button id="finish-sets-btn" class="finish-btn">Finish Workout</button>
     </div>
 
-    <div class="login-form">
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button id="login-btn">Login/Create Account</button>
-    </div>
+    <form class="login-form">
+        <input type="text" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button id="login-btn" type="submit">Login</button>
+    </form>
     <div class="frame">
-        <div class="header">
+        <div id="workout-list-header" class="header">
             <h2>It's [LEG] day!</h2>
-            <p>Workout Time <span class="workout-time">25:12</span></p>
-            <p>Fitness Tracker ™</p>
         </div>
-        <div class="workout-list">
+        <div id="workout-list" class="workout-list">
             <div class="exercise">
                 <p>Back Squat</p>
                 <p>5 x 5</p>
@@ -49,23 +47,21 @@
             </div>
 
         </div>
-        <button class="finish-workout">Finish Workout</button>
+        <button id="finish-workout-btn" class="finish-workout">Finish Workout</button>
     </div>
-    <div class="card">
+    <div id="completed-workout-card" class="card">
         <h1>Good Workout!</h1>
         <p>Last Total Volume: <span class="comparison">&lt;</span> 150 lbs</p>
         <p>New Total Volume: <span class="comparison">&gt;</span> 150 lbs</p>
     </div>
 
     <div class="card-workout">
-        <select class="dropdown-menu">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-            <option value="option3">Option 4</option>
-            <option value="option3">Option 5</option>
+        <select id="workout-type-selector" class="dropdown-menu">
+            <option value="legs">legs</option>
+            <option value="push">legs</option>
+            <option value="pull">legs</option>
         </select>
-        <button class="start-button">Start</button>
+        <button id="start-workout-btn" class="start-button">Start</button>
         
     </div>
    
@@ -75,15 +71,16 @@
         <h2>Create an Account</h2>
         <form action="#" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="create-account-username" name="username" required>
             
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="create-account-password" name="password" required>
             
-            <button type="submit">Sign Up</button>
+            <button id="create-account-btn" type="submit">Sign Up</button>
         </form>
     </div>
 
+    <script src="./js/login.js"></script>
 </body>
 
 </html>

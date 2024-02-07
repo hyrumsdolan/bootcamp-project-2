@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require("../../models");
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => { // Query = /api/users/login
   try {
     // Looks to see if the entered email exists in the database
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -33,6 +33,9 @@ router.post("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
 
 
 router.post("/register", async (req, res) => {
