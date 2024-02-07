@@ -1,0 +1,246 @@
+body {
+  font-family: Arial, sans-serif;
+  background: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  /* Login style */
+}
+.login-form {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: gray;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #4cae4c;
+}
+/* Frame three styling workout parameters */
+.frame {
+  width: 400px;
+  height: 400px;
+  background: gray;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+.header h2 {
+  color: black;
+}
+
+.header p {
+  color: black;
+}
+
+.workout-time {
+  font-weight: bold;
+}
+
+.workout-list {
+  background: #FFFFFF;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exercise {
+  background: lightgrey;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finish-workout {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+/* rep tracker frame */
+.container {
+  background: gray;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 500px;
+}
+.exercise-description {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 150px; 
+  overflow-y: auto; 
+}
+.set {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+input[type="number"] {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  width: 70px;
+}
+.finish-btn {
+  background: red;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Good workout card */
+
+
+.card {
+  background-color: lightgray; 
+  border-radius: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  width: 300px; 
+  padding: 20px; 
+  box-sizing: border-box; 
+  font-family: 'Arial', sans-serif; 
+  color: #333; 
+}
+
+.card h1 {
+  font-size: 24px; 
+  text-align: center; 
+  margin-top: 20px; 
+  margin-bottom: 30px; 
+}
+
+.card p {
+  font-size: 16px; 
+  text-align: center; 
+  margin: 5px 0; 
+}
+
+
+.card .comparison {
+  font-size: 20px; /
+  font-weight: bold; 
+}
+  /* workout selection card */
+  .card-workout {
+    background-color: gray; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 250px; 
+    padding: 60px; 
+    box-sizing: border-box; 
+    font-family: 'Arial', sans-serif; 
+    color: #333; 
+    
+}
+.dropdown-menu {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+/* Create an account card, username, password. */
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background-color: gray;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: black;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  text-align: left;
+  color: black;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  background-color: blue;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
