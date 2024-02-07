@@ -19,3 +19,19 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Form not found"); 
     }
 });
+
+
+const submitButton = document.getElementById("submit");
+if (submitButton) {
+    submitButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        fetchExercisesForMuscle('biceps');
+        console.log("Submit button clicked"); 
+    });
+}
+
+
+  
+  // Example usage
+  fetchExercisesForMuscle('biceps');
+  
