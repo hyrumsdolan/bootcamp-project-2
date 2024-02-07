@@ -62,25 +62,24 @@
             <option value="pull">legs</option>
         </select>
         <button id="start-workout-btn" class="start-button">Start</button>
-        
-    </div>
-   
-    <!-- section for creating account with username and password-->
 
-    <div class="card">
-        <h2>Create an Account</h2>
-        <form action="#" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="create-account-username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="create-account-password" name="password" required>
-            
-            <button id="create-account-btn" type="submit">Sign Up</button>
-        </form>
     </div>
+
+    <!-- section for creating account with username and password-->
+<div class="card">
+    <form class="register-form">
+        <input type="text" id="create-account-username" placeholder="Username">
+
+        <input type="text" id="create-account-email" placeholder="Email">
+
+        <input type="password" id="create-account-password" placeholder="Password">
+
+        <button id="create-account-btn" type="submit">Sign Up</button>
+    </form>
+</div>
 
     <script src="./js/login.js"></script>
+    <script src="./js/register.js"></script>
 </body>
 
 </html>
