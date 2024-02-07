@@ -19,14 +19,7 @@ Workout.init(
             type: DataTypes.STRING, // Specifies the data type for the 'name' field as string
             allowNull: false, // Makes the 'name' field not nullable, ensuring every workout has a name
         },
-        user_id: {
-            type: DataTypes.INTEGER, // Specifies the data type for the 'user_id' field as integer
-            allowNull: false, // Makes the 'user_id' field not nullable, ensuring every workout is associated with a user
-            references: {
-                model: 'user', // Establishes a foreign key relationship to the 'user' model
-                key: 'id', // Specifies that the 'user_id' field references the 'id' field in the 'user' model
-            },
-        },
+
     },
     {
         // Model configuration options
