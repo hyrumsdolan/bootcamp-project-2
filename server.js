@@ -3,6 +3,8 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+require('dotenv').config();
+
 
 // Import routes, database connection, and helpers
 const routes = require("./controllers");
@@ -14,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 
 // Session configuration
 const sess = {
-  secret: "Super secret secret", // Remember to move this to an environment variable in production
+  secret: process.env.SESSION_SECRET, //stores as an environment variable
   cookie: {
     maxAge: 60 * 60 * 1000, // Session expires after 1 hour
     httpOnly: true, // Cookie is only accessible over HTTP(S)
