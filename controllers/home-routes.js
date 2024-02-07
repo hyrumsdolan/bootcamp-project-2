@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-// withAuth middleware ensures that a user is authenticated before accessing the route
-// If the user is not authenticated (not logged in), they are redirected to the login page
 router.get('/', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -15,7 +13,6 @@ router.get('/', withAuth, async (req, res) => {
 
     res.render('homepage', {
       users,
-      // logged_in property indicates whether the user is logged in or not
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -24,13 +21,57 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect them to the homepage
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/selection');
     return;
   }
 
   res.render('login');
+});
+
+router.get('/register', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/selection');
+    return;
+  }
+
+  res.render('register');
+});
+
+router.get('/selection', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('selection');
+});
+
+router.get('/fullWorkout', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('workout');
+});
+
+router.get('singleWorkout', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('singleWorkout');
+});
+
+router.get('/completedWorkout', (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('completedWorkout');
 });
 
 module.exports = router;
