@@ -56,37 +56,46 @@ router.get('/getWorkout', asyncHandler(async (req, res) => { // Query = /api/exe
   }
 }));
 
-router.post('/logSets', asyncHandler(async (req, res) => { // Query = /api/exercise/logSets
-  const { workout_id, user_id, sets } = req.body;
 
-  const workoutExists = await Workout.findByPk(workout_id);
-  if (!workoutExists) {
-    return res.status(404).send('Workout not found');
-  }
+  router.post('/logSets', asyncHandler(async (req, res) => { // Query = /api/exercise/logSets/
+    const { workout_name, sets } = req.body;
+    const user_id = req.session.user_id;
+  
+    const workout = await Workout.findOne({
+      where: { name: workout_name }
+    });
+  
+    if (!workout) {
+      return res.status(404).send('Workout not found');
+    }
 
-  const userExists = await User.findByPk(user_id);
-  if (!userExists) {
-    return res.status(404).send('User not found');
-  }
+    const workoutExists = workout !== null;
+    const workout_id = workout.id; 
+  
+    const userExists = await User.findByPk(user_id);
+    if (!userExists) {
+      return res.status(404).send('User not found');
+    }
+  
+    try {
+      const createdSets = await Set.bulkCreate(
+        sets.map(set => ({
+          ...set,
+          workout_id, 
+          user_id,
+        }))
+      );
+      res.json(createdSets);
+    } catch (error) {
+      console.error('Error logging sets:', error);
+      res.status(500).send('Error logging sets');
+    }
+  }));
 
-  try {
-    const createdSets = await Set.bulkCreate(
-      sets.map(set => ({
-        ...set,
-        workout_id,
-        user_id,
-      }))
-    );
-    res.json(createdSets);
-  } catch (error) {
-    console.error('Error logging sets:', error);
-    res.status(500).send('Error logging sets');
-  }
-}));
 
-router.get('/getSets/:workoutId', asyncHandler(async (req, res) => { // Query = /api/exercise/getSets/1?userId=1
+router.get('/getSets/:workoutId', asyncHandler(async (req, res) => { // Query = /api/exercise/getSets/1
   const { workoutId } = req.params;
-  const userId = req.query.userId;
+  const userId = req.session.user_id;
 
   if (!userId) {
     return res.status(400).send('UserId is required');
