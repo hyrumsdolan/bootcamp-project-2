@@ -21,19 +21,19 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/selection');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/selection');
+  //   return;
+  // }
 
   res.render('login');
 });
 
 router.get('/register', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/selection');
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect('/selection');
+  //   return;
+  // }
 
   res.render('register');
 });

@@ -17,7 +17,7 @@ const registerFormHandler = async (event) => {
   
       if (response.ok) {
         console.log("successfull")
-        // document.location.replace('/');
+        document.location.replace('/');
       } else {
         console.log("Unsuccessfull");
         alert('Failed to register');
