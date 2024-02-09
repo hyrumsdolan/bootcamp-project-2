@@ -9,7 +9,7 @@ const logoutFormHandler = async (event) => {
     if (response.ok) {
         console.log("Logout successful");
         // Redirect the user to the login page or home page after logout
-        // document.location.replace('/login');
+        document.location.replace('/login');
     } else {
         console.log("Logout unsuccessful");
         alert('Failed to log out');
@@ -17,5 +17,5 @@ const logoutFormHandler = async (event) => {
 };
 
 document
-    .querySelector('.logout-button')
+    .getElementById('logout-button')
     .addEventListener('click', logoutFormHandler);
