@@ -11,7 +11,7 @@ router.get('/', withAuth, async (req, res) => {
 
     const users = userData.map((project) => project.get({ plain: true }));
 
-    res.render('homepage', {
+    res.render('selection', {
       users,
       logged_in: req.session.logged_in,
     });
@@ -21,55 +21,55 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // if (req.session.logged_in) {
-  //   res.redirect('/selection');
-  //   return;
-  // }
+  if (req.session.logged_in) {
+    res.redirect('/selection');
+    return;
+  }
 
   res.render('login');
 });
 
 router.get('/register', (req, res) => {
-  // if (req.session.logged_in) {
-  //   res.redirect('/selection');
-  //   return;
-  // }
+  if (req.session.logged_in) {
+    res.redirect('/selection');
+    return;
+  }
 
   res.render('register');
 });
 
 router.get('/selection', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/login');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
 
   res.render('selection');
 });
 
 router.get('/fullWorkout', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/login');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
 
   res.render('fullWorkout');
 });
 
 router.get('/singleWorkout', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/login');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
 
   res.render('singleWorkout');
 });
 
 router.get('/completedWorkout', (req, res) => {
-  // if (!req.session.logged_in) {
-  //   res.redirect('/login');
-  //   return;
-  // }
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
 
   res.render('completedWorkout');
 });
