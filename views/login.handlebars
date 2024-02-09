@@ -1,23 +1,24 @@
-<div class="container">
-        <div class="section login">
-            <h2>Login</h2>
-            <form>
-                <input type="text" placeholder="Email" id="login-email">
-                <input type="password" placeholder="Password" id="login-password">
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        <div class="divider"></div>
-        <div class="section create-account">
-            <h2>Create Account</h2>
-            <form>
-                <input type="text" placeholder="Username" id="create-account-username">
-                <input type="text" placeholder="email" id="create-account-email">
-                <input type="password" placeholder="Password" id="create-account-password">
-                <button type="submit">Create Account</button>
-            </form>
-        </div>
+<div class="login-container container">
+    <div class="section login login-section">
+        <h2>Login</h2>
+        <form id="login-form"> <!-- Add an ID to the form for easier targeting -->
+            <input type="text" placeholder="Email" id="login-email">
+            <input type="password" placeholder="Password" id="login-password">
+            <div id="login-error" style="color: red; display: none;"></div> <!-- Error message placeholder -->
+            <button type="submit">Login</button>
+        </form>
     </div>
+    <div class="divider"></div>
+    <div class="section create-account login-section">
+        <h2>Create Account</h2>
+        <form>
+            <input type="text" placeholder="Username" id="create-account-username">
+            <input type="text" placeholder="email" id="email">
+            <input type="password" placeholder="Password" id="create-account-password">
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
 
 <script src="/js/login.js"></script>
 <script src="/js/register.js"></script>
