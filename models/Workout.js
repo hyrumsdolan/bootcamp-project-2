@@ -19,6 +19,10 @@ Workout.init(
             type: DataTypes.STRING, // Specifies the data type for the 'name' field as string
             allowNull: false, // Makes the 'name' field not nullable, ensuring every workout has a name
         },
+        instructions: {
+            type: DataTypes.TEXT, // Using TEXT datatype for longer strings
+            allowNull: true, // Instructions may not be mandatory for every workout
+        },
 
     },
     {

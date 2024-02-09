@@ -16,6 +16,10 @@ const logoutFormHandler = async (event) => {
     }
 };
 
-document
-    .getElementById('logout-button')
-    .addEventListener('click', logoutFormHandler);
+const logoutButton = document.getElementById('logout-button');
+
+if (logoutButton) {
+    logoutButton.addEventListener('click', logoutFormHandler);
+} else {
+    console.log('Logout button not found');
+}
