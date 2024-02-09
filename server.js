@@ -33,6 +33,11 @@ const sess = {
 
 app.use(session(sess));
 
+app.use((req, res, next) => {
+  res.locals.logged_in = req.session.logged_in || false;
+  next();
+});
+
 // Handlebars setup with custom helpers
 const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);

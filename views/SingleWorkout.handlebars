@@ -1,7 +1,8 @@
 <div class="container">
   <div id="workout-name-and-description" class="exercise-description">
     <h2>Legs</h2>
-    <p>Instructions excercise here..</p>
+    <p id="short-instructions">Instructions excercise here..</p>
+    <button id="instructions-btn" class="instructions-btn">Instructions</button>
   </div>
   <div class="sets">
     <div id="set1" class="set"><span>Set 1:</span>
@@ -20,5 +21,18 @@
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
   </div>
+
+
+<div id="instructions-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Workout Instructions</h2>
+    <p id="full-instructions"></p>
+  </div>
+</div>
+
+
   <button id="finish-sets-btn" class="finish-btn">Finish Workout</button>
 </div>
+<script src="/js/SingleWorkout.js"></script>
+
