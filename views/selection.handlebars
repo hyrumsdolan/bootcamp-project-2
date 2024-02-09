@@ -1,13 +1,16 @@
 {{!-- SELECTION MODAL --}}
-<div id="selection-modal" class="card-workout">
-  <select id="workout-type-selector" class="dropdown-menu">
-    <option value="legs">Legs</option>
-    <option value="push">Pull</option>
-    <option value="pull">Push</option>
-  </select>
+<div id="selection-modal-hide"class="">
+<div id="selection-modal" class="container">
+  <h2>What are we working out today?</h2>
+  <div class="workout-type-buttons">
+    <button id="legs-btn" class="workout-btn">Legs</button>
+    <button id="pull-btn" class="workout-btn">Pull</button>
+    <button id="push-btn" class="workout-btn">Push</button>
+  </div>
   <button id="start-workout-btn" class="start-button">Start</button>
-
 </div>
+</div>
+
 
 {{!-- FULL WORKOUT MODAL --}}
 <div class="frame hide" id="full-workout-modal">
@@ -43,19 +46,19 @@
     <button id="instructions-btn" class="instructions-btn">Instructions</button>
   </div>
   <div class="sets">
-    <div id="set1" class="set"><span>Set 1:</span>
+    <div id="set1" class="set"><span>1:</span>
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
-    <div id="set2" class="set"><span>Set 2:</span>
+    <div id="set2" class="set"><span>2:</span>
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
-    <div id="set3" class="set"><span>Set 3:</span>
+    <div id="set3" class="set"><span>3:</span>
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
-    <div id="set4" class="set"><span>Set 4:</span>
+    <div id="set4" class="set"><span>4:</span>
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
-    <div id="set5" class="set"><span>Set 5:</span>
+    <div id="set5" class="set"><span>5:</span>
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
   </div>

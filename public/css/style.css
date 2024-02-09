@@ -1,368 +1,276 @@
+/* Base styles for dark mode */
 body {
-  font-family: Arial, sans-serif;
-  background: lightblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  /* Login style */
-}
-
-.hide {
-  display: none;
-} 
-
-.login-form {
-  width: 300px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: gray;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #5cb85c;
-  color: white;
-  cursor: pointer;
-}
-
-.login-form button:hover {
-  background-color: #4cae4c;
-}
-
-/* Frame three styling workout parameters */
-.frame {
-  width: 400px;
-  height: 400px;
-  background: gray;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-.header h2 {
-  color: black;
-}
-
-.header p {
-  color: black;
-}
-
-.workout-time {
-  font-weight: bold;
-}
-
-.workout-list {
-  background: #FFFFFF;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.exercise {
-  background: lightgrey;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 8px;
+  background-color: #121212; /* Dark mode background */
+  color: #FFFFFF; /* Light text for dark mode */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  height: 100vh; /* Full screen height */
+  margin: 0;
+  padding: 20px; /* Add padding around the edges */
+  box-sizing: border-box; /* Include padding in the height calculation */
 }
 
-.finish-workout {
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  background: red;
+
+
+
+
+
+/* Buttons */
+button, .logout-button {
+  background-color: #D35400; /* Burnt orange background */
   color: white;
   border: none;
-  border-radius: 8px;
-}
-
-/* rep tracker frame */
-.container {
-  background: gray;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 500px;
-}
-
-.exercise-description {
-  background: white;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
-  height: 150px;
-  overflow-y: auto;
-}
-
-.set {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-input[type="number"] {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  width: 70px;
-}
-
-.finish-btn {
-  background: red;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 15px;
-  text-align: center;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-}
-
-/* Good workout card */
-
-
-.card {
-  background-color: lightgray;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-}
-
-.card h1 {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-.card p {
-  font-size: 16px;
-  text-align: center;
-  margin: 5px 0;
-}
-
-
-.card .comparison {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* workout selection card */
-.card-workout {
-  background-color: gray;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  padding: 60px;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-
-}
-
-.dropdown-menu {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-
-/* Create an account card, username, password. */
-
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.card {
-  background-color: gray;
+  padding: 10px 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  text-align: center;
-  width: 300px;
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: black;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 5px;
-  text-align: left;
-  color: black;
-}
-
-input {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-button {
-  background-color: blue;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 3px;
   cursor: pointer;
+  font-weight: bold;
+  margin: 10px auto; /* Center buttons */
+  display: block; /* Ensure buttons are properly centered */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #E67E22; /* Lighter shade for hover effect */
 }
 
-.container {
-  
-  justify-content: space-between;
-  background: gray;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 500px;
+/* Dropdown */
+.dropdown-menu {
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+  width: 100%; /* Ensure dropdown fills container */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-}
-
-.card {
-  width: 300px;
-  background: white;
+/* Modals and containers */
+.card, .frame, .container, .modal-content {
+  background-color: #1E1E1E; /* Slightly lighter dark shade for contrast */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.section {
   padding: 20px;
+  max-width: 600px; /* Uniform width for desktop */
+  width: 90%; /* Responsive width for smaller screens */
+  margin: 20px auto; /* Center modals */
+  text-align: center; /* Center text inside modals */
 }
 
-.section h2 {
-  margin: 0 0 10px 0;
-  color: #333;
+/* Adjusting Single Workout Page Size */
+.container {
+  padding: 15px; /* Reduced padding to decrease unnecessary space */
+  display: flex;
+  flex-direction: column;
+  justify-content: start; /* Aligns content to start to minimize space */
+  overflow-y: auto; /* Ensures scrollability for overflow */
 }
 
-.input-group {
+/* Adjustments for input fields to ensure compact layout */
+input[type="number"] {
+  max-width: 100px; /* Reduces the width of input fields for a more compact layout */
+}
+
+/* Container for sets */
+.sets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.set {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.set span {
+  white-space: nowrap; /* Prevents wrapping of "Set 1:", "Set 2:", etc. */
+}
+
+/* Centering Set 5 content */
+#set5 {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically for good measure */
+  width: 100%; /* Ensure it spans the full width of its container */
+  gap: 10px; /* Maintain some space between the elements */
+}
+
+#set5 span, #set5 input[type="number"] {
+  flex: 0 0 auto; /* Do not allow the span and inputs to grow or shrink */
+}
+
+#set5 input[type="number"] {
+  width: auto; /* Allow the input width to auto-adjust, potentially based on its content */
+  padding: 8px; /* Adjust padding for better visual appearance */
+}
+
+
+
+/* Adjust inputs within sets for consistent appearance */
+.set input[type="number"] {
+  width: 100%; /* Allows inputs to fill available space */
+  padding: 8px; /* Adjust padding for better alignment and appearance */
+}
+
+
+/* Inputs */
+input[type="number"], input[type="text"], input[type="password"] {
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px;
+  margin: 10px 0; /* Margin for spacing */
+  display: block; /* Change display to block for inputs to respect margin auto */
+  width: calc(100% - 20px); /* Adjust width to ensure proper padding */
+}
+
+/* Exercise cards */
+.exercise, .exercise-description {
+  background-color: #262626; /* Even lighter dark shade for differentiation */
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
   margin-bottom: 15px;
 }
 
-.input-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.button-group {
-  text-align: right;
-}
-
-.button-group button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-}
-
-.button-group button:hover {
-  background-color: #0056b3;
-}
-
-.divider {
-  height: 1px;
-  background-color: #ddd;
-}
 
 
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
+/* Modal close button */
 .close {
   color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card, .frame, .container, .modal-content {
+      width: 95%; /* Allow more room on smaller screens */
+  }
+}
+
+.modal-content {
+  padding: 20px; /* Ensure consistent padding for modals */
+  text-align: left; /* Aligns text to left for a cleaner appearance */
+}
+
+
+
+/* Logout Button Placement */
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10; /* Ensure it's above other content */
+}
+
+/* Login Modal Structure */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form input[type="text"], .login-form input[type="password"], .login-form button {
+  width: calc(100% - 40px); /* Adjust width to ensure padding doesn't expand beyond modal */
+}
+
+/* Hide workout instruction modal initially */
+#instructions-modal {
+  display: none; /* Keep hidden until button click */
+}
+
+/* Selection Modal Container */
+#selection-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+
+
+
+/* Container adjustments for workout-type-buttons */
+.workout-type-buttons {
+  display: flex; /* Aligns buttons in a row */
+  justify-content: space-between; /* Distributes buttons evenly */
+  width: 100%; /* Takes up full container width */
+}
+
+/* General styling for workout buttons */
+.workout-btn {
+  flex: 1; /* Each button takes equal space */
+  border: 1px solid white; /* White border as per requirement */
+  background-color: #1E1E1E; /* Same as the container color */
+  color: white; /* Text color */
+  padding: 10px 0; /* Padding for better visual */
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Remove spacing between buttons */
+.workout-btn:not(:last-child) {
+  margin-right: -2px; /* Removes spacing by overlapping borders */
+}
+
+/* Specific corner rounding */
+#legs-btn {
+  border-top-left-radius: 5px; /* Rounded top left corner */
+  border-bottom-left-radius: 5px; /* Rounded bottom left corner */
+}
+
+#push-btn {
+  border-top-right-radius: 5px; /* Rounded top right corner */
+  border-bottom-right-radius: 5px; /* Rounded bottom right corner */
+}
+
+/* Center button with no rounded corners */
+#pull-btn {
+  border-radius: 0; /* No rounded corners */
+}
+
+/* Adjusting for a hover effect */
+.workout-btn:hover {
+  background-color: #333; /* Darker shade on hover */
+}
+
+
+
+
+
+
+
+
+/* Adjust the button within the selection modal for consistency */
+#start-workout-btn {
+  width: auto; /* Allow the button to size according to its content */
+  padding: 10px 20px; /* Consistent padding */
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sets {
+    display: block; /* Stack inputs vertically on smaller screens */
+  }
+
+  .set {
+    margin-bottom: 5px; /* Reduce margin on smaller screens for compact layout */
+  }
 }
 
