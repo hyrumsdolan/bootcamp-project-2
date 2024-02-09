@@ -3,6 +3,7 @@ const loginFormHandler = async (event) => {
 
   const email = document.querySelector('#login-email').value.trim();
   const password = document.querySelector('#login-password').value.trim();
+  const loginErrorDiv = document.querySelector('#login-error'); // Get the error div
 
   if (email && password) {
     try {
@@ -17,14 +18,15 @@ const loginFormHandler = async (event) => {
         document.location.replace('/');
       } else {
         console.log("Unsuccessful");
-        alert('Failed to log in');
+        loginErrorDiv.textContent = 'Incorrect email or password! Please try again.'; // Set error message
+        loginErrorDiv.style.display = 'block'; // Make the error div visible
       }
     } catch (error) {
       console.error('An error occurred:', error);
+      loginErrorDiv.textContent = 'An error occurred. Please try again.'; // Set error message for unexpected errors
+      loginErrorDiv.style.display = 'block'; // Make the error div visible
     }
   }
 };
 
-document
-  .querySelector('.login')
-  .addEventListener('submit', loginFormHandler);
+document.getElementById('login-form').addEventListener('submit', loginFormHandler); // Updated to target the form by ID
