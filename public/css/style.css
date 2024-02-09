@@ -9,6 +9,10 @@ body {
   /* Login style */
 }
 
+.hide {
+  display: none;
+} 
+
 .login-form {
   width: 300px;
   margin: 100px auto;
@@ -252,7 +256,7 @@ button:hover {
 }
 
 .container {
-  display: flex;
+  
   justify-content: space-between;
   background: gray;
   border-radius: 20px;
