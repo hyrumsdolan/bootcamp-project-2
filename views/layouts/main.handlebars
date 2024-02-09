@@ -1,13 +1,24 @@
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
+
   <body>
     {{{body}}}
+    {{#if loggedIn}}
+      <button
+        class="logout-button"
+        id="logout-button"
+        type="submit"
+      >Logout</button>
+    {{/if}}
   </body>
-  <script src="./js/handlebars.js"></script>
-  <button class="logout-button">Logout</button>
+
+  <script src="/js/handlebars.js"></script>
+  <script src="/js/logout.js"></script>
+
 </html>
