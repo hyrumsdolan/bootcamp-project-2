@@ -20,6 +20,9 @@ const loginFormHandler = async (event) => {
         console.log("Unsuccessful");
         loginErrorDiv.textContent = 'Incorrect email or password! Please try again.'; // Set error message
         loginErrorDiv.style.display = 'block'; // Make the error div visible
+        setTimeout(() => {
+          loginErrorDiv.style.display = 'none'; // Hide the error div
+        }, 5000); // Time in milliseconds
       }
     } catch (error) {
       console.error('An error occurred:', error);
