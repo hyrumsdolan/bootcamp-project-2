@@ -1,4 +1,5 @@
-<div class="card-workout">
+{{!-- SELECTION MODAL --}}
+<div id="selection-modal" class="card-workout">
   <select id="workout-type-selector" class="dropdown-menu">
     <option value="legs">Legs</option>
     <option value="push">Pull</option>
@@ -7,4 +8,74 @@
   <button id="start-workout-btn" class="start-button">Start</button>
 
 </div>
+
+{{!-- FULL WORKOUT MODAL --}}
+<div class="frame hide" id="full-workout-modal">
+  <div id="workout-list-header" class="header">
+    <h2>It's [LEG] day!</h2>
+  </div>
+  <div id="workout-list" class="workout-list">
+    <div class="exercise">
+      <p>Back Squat</p>
+    </div>
+    <div class="exercise">
+      <p>Back Squat</p>
+    </div>
+    <div class="exercise">
+      <p>Back Squat</p>
+    </div>
+    <div class="exercise">
+      <p>Back Squat</p>
+    </div>
+    <div class="exercise">
+      <p>Back Squat</p>
+    </div>
+
+  </div>
+  <button id="finish-workout-btn" class="finish-workout">Finish Workout</button>
+</div>
+
+{{!-- SINGLE WORKOUT MODAL --}}
+<div class="container hide" id="single-workout-modal">
+  <div  class="exercise-description">
+    <h2>Legs</h2>
+    <p id="short-instructions">Instructions excercise here..</p>
+    <button id="instructions-btn" class="instructions-btn">Instructions</button>
+  </div>
+  <div class="sets">
+    <div id="set1" class="set"><span>Set 1:</span>
+      <input type="number" placeholder="reps" />
+      <input type="number" placeholder="weight" /></div>
+    <div id="set2" class="set"><span>Set 2:</span>
+      <input type="number" placeholder="reps" />
+      <input type="number" placeholder="weight" /></div>
+    <div id="set3" class="set"><span>Set 3:</span>
+      <input type="number" placeholder="reps" />
+      <input type="number" placeholder="weight" /></div>
+    <div id="set4" class="set"><span>Set 4:</span>
+      <input type="number" placeholder="reps" />
+      <input type="number" placeholder="weight" /></div>
+    <div id="set5" class="set"><span>Set 5:</span>
+      <input type="number" placeholder="reps" />
+      <input type="number" placeholder="weight" /></div>
+  </div>
+<div id="instructions-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Workout Instructions</h2>
+    <p id="full-instructions"></p>
+  </div>
+</div>
+  <button id="finish-sets-btn" class="finish-btn">Finish Workout</button>
+</div>
+
+{{!-- Finished Workout Modal --}}
+<div id="completed-workout-modal" class="card hide">
+  <h1>Good Workout!</h1>
+  <p>Last Total Volume: <span class="comparison">&lt;</span> 150 lbs</p>
+  <p>New Total Volume: <span class="comparison">&gt;</span> 150 lbs</p>
+  <button id="restart-btn" class="finish-workout">Finish Workout</button>
+</div>
+
+<script src="/js/SingleWorkout.js"></script>
 <script src="/js/selection.js"></script>
