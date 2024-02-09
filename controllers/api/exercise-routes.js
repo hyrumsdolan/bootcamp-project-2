@@ -31,7 +31,8 @@ router.get('/getWorkout', asyncHandler(async (req, res) => { // Query = /api/exe
             where: { name: workout.name },
             defaults: {
               name: workout.name,
-              muscle: m
+              muscle: m,
+              instructions: workout.instructions, 
             }
           });
 
@@ -64,7 +65,7 @@ router.get('/getWorkout', asyncHandler(async (req, res) => { // Query = /api/exe
     const workout = await Workout.findOne({
       where: { name: workout_name }
     });
-  
+
     if (!workout) {
       return res.status(404).send('Workout not found');
     }
@@ -73,6 +74,7 @@ router.get('/getWorkout', asyncHandler(async (req, res) => { // Query = /api/exe
     const workout_id = workout.id; 
   
     const userExists = await User.findByPk(user_id);
+ 
     if (!userExists) {
       return res.status(404).send('User not found');
     }
@@ -93,36 +95,63 @@ router.get('/getWorkout', asyncHandler(async (req, res) => { // Query = /api/exe
   }));
 
 
-router.get('/getSets/:workoutId', asyncHandler(async (req, res) => { // Query = /api/exercise/getSets/1
-  const { workoutId } = req.params;
-  const userId = req.session.user_id;
-
-  if (!userId) {
-    return res.status(400).send('UserId is required');
-  }
-
-  try {
-    const sets = await Set.findAll({
-      where: {
-        workout_id: workoutId,
-        user_id: userId
-      },
-      include: [
-        {
-          model: Workout,
-          attributes: ['name'],
-        },
-        {
-          model: User,
-          attributes: ['name', 'email'],
+  router.get('/getSets/:workoutName', asyncHandler(async (req, res) => {
+    const { workoutName } = req.params;
+    const userId = req.session.user_id;
+  
+    if (!userId) {
+        return res.status(400).send('UserId is required');
+    }
+  
+    try {
+        // Find the workout details including the instructions
+        const workout = await Workout.findOne({
+            where: { name: workoutName }
+        });
+  
+        if (!workout) {
+            return res.status(404).send('Workout not found');
         }
-      ]
-    });
-    res.json(sets);
-  } catch (error) {
-    console.error('Error retrieving sets:', error);
-    res.status(500).send('Error retrieving sets');
-  }
+  
+        // Fetch the last 5 sets based on the highest set IDs
+        const sets = await Set.findAll({
+            where: {
+                workout_id: workout.id,
+                user_id: userId
+            },
+            order: [['id', 'DESC']], // Order by 'id' in descending order
+            limit: 5 // Limits the result to the last 5 sets
+        });
+  
+        // Combine the workout details with the sets information
+        const responsePayload = {
+            workoutDetails: {
+                id: workout.id,
+                name: workout.name,
+                instructions: workout.instructions,
+            },
+            sets: sets.reverse() // Reverse to ensure the sets are returned in ascending order
+        };
+  
+        res.json(responsePayload);
+    } catch (error) {
+        console.error('Error retrieving sets and workout details:', error);
+        res.status(500).send('Error retrieving sets and workout details');
+    }
 }));
+
+
+
+  router.get('/workoutDetails/:id', asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const workout = await Workout.findByPk(id);
+    if (workout) {
+        res.json(workout);
+    } else {
+        res.status(404).send('Workout not found');
+    }
+}));
+
+  
 
 module.exports = router;
