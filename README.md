@@ -1,30 +1,28 @@
-# For Develoment
+# Workout Application
+    by H. Dolan, J. Nay, K. Jansson, M. Kaufman, T. Nielson
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-### Update before final deploy
+* [License](#license)
 
-## Basic dev note
-
-- using eslint and prettier
-  - Enforces "doubleQuotes" and tabs over spaces
-  - use "npm run format" and "npm run lint"
-
-## To-Do List
-
-- Decide on a project
-
-## Bugs
-
-### write bugs like so
-
-- Known bug and how to replicate
-  - Current workaround if applicable
-
-## Resources
-
-### APIs Used
-
-- example
-
-### Relevant Documentation
-
-- example
+## Description
+Coaches the user through a variety of workouts as prompted.
+## Installation
+Initialize app through any modern web browser.
+## Usage
+Web
+## Contributing
+N/A
+## Tests
+N/A
+## Questions
+* GitHub: https://github.com/hyrumsdolan/bootcamp-project-2
+* Email: 
+## License   
+    licensed under the MIT license
