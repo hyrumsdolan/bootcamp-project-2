@@ -72,6 +72,8 @@ function updateWorkoutList(workouts) {
       // Store full instructions for use in modal
       singleWorkoutInstruction.dataset.fullInstructions = workout.instructions;
       document.getElementById("single-workout-modal").dataset.currentExerciseId = workout.id;
+
+      getSets(workout.name);
     });
 
     workoutList.appendChild(exerciseDiv);
@@ -101,7 +103,7 @@ function setEventListeners() {
     //Button Navigations
     finishWorkoutBtn.addEventListener("click", () => {
       navigateFromTo("#full-workout-modal", "#completed-workout-modal");
-      
+
     });
   
     restartBtn.addEventListener("click", () => {
@@ -110,7 +112,7 @@ function setEventListeners() {
   
     finishSetsBtn.addEventListener("click", () => {
       navigateFromTo("#single-workout-modal", "#full-workout-modal");
-      
+      logSets();
     });
   
     // This listener is now outside and directly accessible after DOM is loaded.
@@ -131,4 +133,83 @@ function setEventListeners() {
 
     });
   }
+  
+  async function logSets() {
+    const sets = [];
+    const setDivs = document.querySelectorAll(".sets .set"); // Select all set divs
+
+    setDivs.forEach((setDiv) => {
+        // Use querySelector within setDiv to find inputs specifically within this div
+        const weightInput = setDiv.querySelector('.weight').value;
+        const repsInput = setDiv.querySelector('.reps').value;
+
+        // Push an object with weight and reps into the sets array
+        // Ensure to convert values to the correct type (e.g., Number) if necessary
+        sets.push({
+            weight: Number(weightInput), // Convert string to number
+            reps: Number(repsInput), // Convert string to number
+        });
+    });
+
+    try {
+        const response = await fetch("/api/exercise/logSets", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                workout_name: currentWorkout,
+                sets, // This should now contain all the set data
+            }),
+        });
+
+        if (response.ok) {
+            const loggedSets = await response.json();
+            console.log("Sets logged successfully", loggedSets);
+        } else {
+            console.error("Sets log unsuccessful");
+            alert("Failed to log sets");
+        }
+    } catch (error) {
+        console.error("Sets log error:", error);
+    }
+}
+
+
+  async function getSets(workoutName) {
+    try {
+      const response = await fetch(`/api/exercise/getSets/${workoutName}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+  
+      if (response.ok) {
+        const { workoutDetails, sets } = await response.json();
+        console.log("Fetch successful", workoutDetails, sets);
+  
+
+        sets.forEach((set, index) => {
+
+          let setDiv = document.getElementById(`set${index + 1}`);
+        
+          // Populate the set's input fields
+          const repsInput = setDiv.querySelector('input[placeholder="reps"]');
+          const weightInput = setDiv.querySelector('input[placeholder="weight"]');
+          repsInput.value = set.reps;
+          weightInput.value = set.weight;
+          if (!set.reps) {
+            repsInput.value = 0
+          }
+          if (!set.weight) {
+            weightInput.value = 0
+          }
+        });
+  
+        
+          }
+        } catch (error) {
+        console.error("Fetch error:", error);
+    
+  }
+}
   

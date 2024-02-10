@@ -58,49 +58,58 @@ button:hover {
   overflow-y: auto;
 }
 
-input[type="number"] {
-  max-width: 100px;
-}
+
 
 .sets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* Creates two columns */
+  grid-template-rows: min-content;
+  padding: 0px;
+  margin: 0px;
+justify-content: center;
+gap: 1rem; /* Spacing between grid items */
 }
+
 
 .set {
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 10px;
+  grid-template-columns: repeat(3, min-content); /* Three columns */
+  align-items: center; /* Align items vertically */
+padding: 0px;
+  margin: 0px;
+  gap: 0px; /* Spacing between grid items */
 }
 
 .set span {
-  white-space: nowrap;
+  padding: 0px;
+  margin: .1rem;
 }
+
+.set .reps, .set .weight, .set .last {
+  justify-self: center; /* Aligns content to the start of the grid area */
+  margin: .1rem;
+}
+
+.set .last:first-of-type {
+  grid-column-start: 2; /* Starts from the second column */
+  grid-row-start: 2; /* Positioned in the second row */
+  align-self: start;
+  font-size: .7rem;
+}
+
+/* Target even .last elements within .set */
+.set .last:last-of-type  {
+  grid-column-start: 3; /* Starts from the second column */
+  grid-row-start: 2; /* Positioned in the second row */
+  font-size: .7rem;
+}
+
 
 #set5 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
+  grid-column: 1 / span 2; /* Spans across both columns */
+  justify-self: center;
 }
 
-#set5 span, #set5 input[type="number"] {
-  flex: 0 0 auto;
-}
-
-#set5 input[type="number"] {
-  width: auto;
-  padding: 8px;
-}
-
-.set input[type="number"] {
-  width: 100%;
-  padding: 8px;
-}
 
 input[type="number"], input[type="text"], input[type="password"] {
   background-color: #333;
@@ -178,9 +187,7 @@ input[type="number"], input[type="text"], input[type="password"] {
   width: calc(100% - 40px);
 }
 
-#instructions-modal {
 
-}
 
 #selection-modal {
   display: flex;
@@ -237,18 +244,24 @@ input[type="number"], input[type="text"], input[type="password"] {
   display: none;
 }
 
-.completed-exercise p {
-  color: gray;
+input[type="number"] {
+  max-width: 100px;
+  align-self: center;
+  min-width: 100px;
+  padding: .5rem;
+  border-radius: 4px;
+  margin: 5px;
+  text-align: center;
 }
+
 
 
 @media (max-width: 768px) {
   .sets {
-    display: block;
-  }
-
-  .set {
-    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
+
 }
