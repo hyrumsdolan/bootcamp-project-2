@@ -29,37 +29,55 @@
 
 {{!-- SINGLE WORKOUT MODAL --}}
 <div class="container hide" id="single-workout-modal">
-  <div  class="exercise-description">
+  <div class="exercise-description">
     <h2>Legs</h2>
-    <p id="short-instructions">Instructions excercise here..</p>
+    <p id="short-instructions">Instructions exercise here..</p>
     <button id="instructions-btn" class="instructions-btn">Instructions</button>
   </div>
   <div class="sets">
     <div id="set1" class="set"><span>1:</span>
-      <input type="number" placeholder="reps" />
-      <input type="number" placeholder="weight" /></div>
+      <input type="number" placeholder="reps" class="reps" />
+      <p class="last">Last:</p>
+      <input type="number" placeholder="weight" class="weight" />
+      <p class="last">Last:</p>
+    </div>
     <div id="set2" class="set"><span>2:</span>
-      <input type="number" placeholder="reps" />
-      <input type="number" placeholder="weight" /></div>
+      <input type="number" placeholder="reps" class="reps" />
+      <p class="last">Last:</p>
+      <input type="number" placeholder="weight" class="weight" />
+      <p class="last">Last:</p>
+    </div>
     <div id="set3" class="set"><span>3:</span>
-      <input type="number" placeholder="reps" />
-      <input type="number" placeholder="weight" /></div>
+      <input type="number" placeholder="reps" class="reps" />
+      <p class="last">Last:</p>
+      <input type="number" placeholder="weight" class="weight" />
+      <p class="last">Last:</p>
+    </div>
     <div id="set4" class="set"><span>4:</span>
-      <input type="number" placeholder="reps" />
-      <input type="number" placeholder="weight" /></div>
+      <input type="number" placeholder="reps" class="reps" />
+      <p class="last">Last:</p>
+      <input type="number" placeholder="weight" class="weight" />
+      <p class="last">Last:</p>
+    </div>
     <div id="set5" class="set"><span>5:</span>
-      <input type="number" placeholder="reps" />
-      <input type="number" placeholder="weight" /></div>
+      <input type="number" placeholder="reps" class="reps" />
+      <p class="last">Last:</p>
+      <input type="number" placeholder="weight" class="weight" />
+      <p class="last">Last:</p>
+    </div>
   </div>
+  <button id="finish-sets-btn" class="finish-btn">Finish Sets</button>
+</div>
 <div id="instructions-modal" class="modal hide">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>How to:</h2>
     <p id="full-instructions"></p>
   </div>
+  
 </div>
-  <button id="finish-sets-btn" class="finish-btn">Finish Sets</button>
-</div>
+
+
 
 {{!-- Finished Workout Modal --}}
 <div id="completed-workout-modal" class="card hide">
