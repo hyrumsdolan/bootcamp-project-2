@@ -1,45 +1,134 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const startWorkoutBtn = document.getElementById('start-workout-btn');
+const legsBtn = document.getElementById("legs-btn");
+const pushBtn = document.getElementById("push-btn");
+const pullBtn = document.getElementById("pull-btn");
+const finishWorkoutBtn = document.getElementById("finish-workout-btn");
+const restartBtn = document.getElementById("restart-btn");
+const finishSetsBtn = document.getElementById("finish-sets-btn");
 
-    startWorkoutBtn.addEventListener('click', async function() {
-        const muscleGroup = document.getElementById('workout-type-selector').value;
-        
-        try {
-            const response = await fetch(`/api/exercise/getWorkout?muscle=${muscleGroup}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            });
+let workoutObject;
+let currentWorkout;
 
-            if (response.ok) {
-                const workouts = await response.json();
-                console.log("Fetch successful", workouts);
-            
-            } else {
-                console.error("Fetch unsuccessful");
-                alert('Failed to fetch workouts');
-            }
-        } catch (error) {
-            console.error('Fetch error:', error);
-        }
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  setEventListeners();
 });
 
-document.querySelector('#start-workout-btn').addEventListener('click', () => {
-    document.querySelector('#selection-modal-hide').classList.add('hide');
-    document.querySelector('#full-workout-modal').classList.remove('hide');
-  });
+async function getWorkout(muscleGroup) {
+    let muscleText = muscleGroup;
 
-  document.querySelector('#finish-workout-btn').addEventListener('click', () => {
-    document.querySelector('#full-workout-modal').classList.add('hide');
-    document.querySelector('#completed-workout-modal').classList.remove('hide');
-  });
+    // Capitalize the first letter and remove the 's' from "legs" if needed
+    muscleText = muscleGroup.charAt(0).toUpperCase() + (muscleGroup === "legs" ? muscleGroup.slice(1, -1) : muscleGroup.slice(1));
+    
+    document.getElementById("workout-list-header").innerHTML = `<h2> It's ${muscleText} Day </h2>`;
+    
 
-  document.querySelector('#restart-btn').addEventListener('click', () => {
-    document.querySelector('#completed-workout-modal').classList.add('hide');
-    document.querySelector('#single-workout-modal').classList.remove('hide');
-  });
+  try {
+    const response = await fetch(`/api/exercise/getWorkout?muscle=${muscleGroup}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
-  document.querySelector('#finish-sets-btn').addEventListener('click', () => {
-    document.querySelector('#single-workout-modal').classList.add('hide');
-    document.querySelector('#full-workout-modal').classList.remove('hide');
+    if (response.ok) {
+      const workouts = await response.json();
+      workoutObject = workouts.details;
+      console.log("Fetch successful", workoutObject);
+      updateWorkoutList(workoutObject);
+    } else {
+      console.error("Fetch unsuccessful");
+      alert("Failed to fetch workouts");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+}
+
+function navigateFromSelectionToFullWorkout() {
+  document.querySelector("#selection-modal-hide").classList.add("hide");
+  document.querySelector("#full-workout-modal").classList.remove("hide");
+}
+
+function updateWorkoutList(workouts) {
+  const workoutList = document.getElementById("workout-list");
+  // Clear existing workout list
+  workoutList.innerHTML = "";
+
+  // Dynamically create and append workout items
+  workouts.forEach((workout) => {
+    const exerciseDiv = document.createElement("div");
+    exerciseDiv.className = "exercise";
+    exerciseDiv.innerHTML = `<p>${workout.name}</p>`;
+    exerciseDiv.dataset.exerciseId = workout.id;
+
+    exerciseDiv.addEventListener("click", () => {
+      currentWorkout = workout.name;
+      navigateFromTo("#full-workout-modal", "#single-workout-modal");
+      let singleWorkoutNameDisplay = document.querySelector(".exercise-description h2");
+      let singleWorkoutInstruction = document.querySelector(".exercise-description p");
+      singleWorkoutNameDisplay.textContent = workout.name;
+
+      // Truncate instructions to 200 characters followed by ellipses if longer
+      let instructionsPreview = workout.instructions.length > 200 ? workout.instructions.substring(0, 200) + "..." : workout.instructions;
+      singleWorkoutInstruction.textContent = instructionsPreview;
+
+      // Store full instructions for use in modal
+      singleWorkoutInstruction.dataset.fullInstructions = workout.instructions;
+      document.getElementById("single-workout-modal").dataset.currentExerciseId = workout.id;
+    });
+
+    workoutList.appendChild(exerciseDiv);
   });
+}
+
+function navigateFromTo(hideMe, showMe) {
+  document.querySelector(hideMe).classList.add("hide");
+  document.querySelector(showMe).classList.remove("hide");
+}
+
+function setEventListeners() {
+    // Selection Page Options
+    legsBtn.addEventListener("click", () => {
+      getWorkout("legs");
+      navigateFromSelectionToFullWorkout();
+    });
+    pullBtn.addEventListener("click", () => {
+      getWorkout("pull");
+      navigateFromSelectionToFullWorkout();
+    });
+    pushBtn.addEventListener("click", () => {
+      getWorkout("push");
+      navigateFromSelectionToFullWorkout();
+    });
+  
+    //Button Navigations
+    finishWorkoutBtn.addEventListener("click", () => {
+      navigateFromTo("#full-workout-modal", "#completed-workout-modal");
+      
+    });
+  
+    restartBtn.addEventListener("click", () => {
+      navigateFromTo("#completed-workout-modal", "#selection-modal-hide"); // Adjusted to go back to the selection screen
+    });
+  
+    finishSetsBtn.addEventListener("click", () => {
+      navigateFromTo("#single-workout-modal", "#full-workout-modal");
+      
+    });
+  
+    // This listener is now outside and directly accessible after DOM is loaded.
+    document.querySelector("#instructions-btn").addEventListener("click", () => {
+      // Retrieve full instructions from the dataset or variable
+      let fullInstructions = document.querySelector(".exercise-description p").dataset.fullInstructions;
+  
+      // Set the full instructions in the modal
+      document.getElementById("full-instructions").textContent = fullInstructions;
+  
+      // Show the instructions modal
+      document.getElementById("instructions-modal").style.display = "block";
+
+    });
+  
+    document.querySelector(".close").addEventListener("click", () => {
+        document.getElementById("instructions-modal").style.display = "none";
+
+    });
+  }
+  

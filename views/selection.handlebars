@@ -7,7 +7,6 @@
     <button id="pull-btn" class="workout-btn">Pull</button>
     <button id="push-btn" class="workout-btn">Push</button>
   </div>
-  <button id="start-workout-btn" class="start-button">Start</button>
 </div>
 </div>
 
@@ -15,27 +14,17 @@
 {{!-- FULL WORKOUT MODAL --}}
 <div class="frame hide" id="full-workout-modal">
   <div id="workout-list-header" class="header">
-    <h2>It's [LEG] day!</h2>
+    <h2>Time to Workout</h2>
   </div>
   <div id="workout-list" class="workout-list">
     <div class="exercise">
-      <p>Back Squat</p>
+      <p>Just one moment...</p>
     </div>
-    <div class="exercise">
-      <p>Back Squat</p>
+    
     </div>
-    <div class="exercise">
-      <p>Back Squat</p>
-    </div>
-    <div class="exercise">
-      <p>Back Squat</p>
-    </div>
-    <div class="exercise">
-      <p>Back Squat</p>
-    </div>
-
+<button id="finish-workout-btn" class="finish-workout">Finish Workout</button>
   </div>
-  <button id="finish-workout-btn" class="finish-workout">Finish Workout</button>
+  
 </div>
 
 {{!-- SINGLE WORKOUT MODAL --}}
@@ -62,23 +51,22 @@
       <input type="number" placeholder="reps" />
       <input type="number" placeholder="weight" /></div>
   </div>
-<div id="instructions-modal" class="modal">
+<div id="instructions-modal" class="modal hide">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Workout Instructions</h2>
+    <h2>How to:</h2>
     <p id="full-instructions"></p>
   </div>
 </div>
-  <button id="finish-sets-btn" class="finish-btn">Finish Workout</button>
+  <button id="finish-sets-btn" class="finish-btn">Finish Sets</button>
 </div>
 
 {{!-- Finished Workout Modal --}}
 <div id="completed-workout-modal" class="card hide">
   <h1>Good Workout!</h1>
-  <p>Last Total Volume: <span class="comparison">&lt;</span> 150 lbs</p>
-  <p>New Total Volume: <span class="comparison">&gt;</span> 150 lbs</p>
+  <p>We're so proud of you. Look at you lifting those weights.</p>
+  
   <button id="restart-btn" class="finish-workout">Finish Workout</button>
 </div>
 
-<script src="/js/SingleWorkout.js"></script>
 <script src="/js/selection.js"></script>
