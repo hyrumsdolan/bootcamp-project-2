@@ -193,10 +193,10 @@ function setEventListeners() {
           let setDiv = document.getElementById(`set${index + 1}`);
         
           // Populate the set's input fields
-          const repsInput = setDiv.querySelector('input[placeholder="reps"]');
-          const weightInput = setDiv.querySelector('input[placeholder="weight"]');
-          repsInput.value = set.reps;
-          weightInput.value = set.weight;
+          const repsInput = setDiv.querySelector(".last1");
+          const weightInput = setDiv.querySelector(".last2");
+          repsInput.textContent = "last: "+set.reps;
+          weightInput.textContent = "last: "+set.weight;
           if (!set.reps) {
             repsInput.value = 0
           }
