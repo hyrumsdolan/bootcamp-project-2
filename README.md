@@ -8,6 +8,7 @@
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
+* [Languages](#Languages)
 
 * [License](#license)
 
@@ -18,11 +19,20 @@ Initialize app through any modern web browser.
 ## Usage
 Web
 ## Contributing
-N/A
+  https://github.com/hyrumsdolan
+  https://github.com/jessenay
+  https://github.com/KylerJansson
+  https://github.com/MaxwellKaufman
+  https://github.com/TNielson78
 ## Tests
 N/A
 ## Questions
-* GitHub: https://github.com/hyrumsdolan/bootcamp-project-2-Project Repo
+
+##Languages
+HTML, CSS, Javascript, JSON.
+Tech used:Node, sequilize, Mysql, Express, Prettier, Web API(API-Ninjas.
+* 
+*
 * 
 * Email: 
 ## License   
