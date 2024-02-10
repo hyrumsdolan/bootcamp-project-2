@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.querySelector('#start-workout-btn').addEventListener('click', () => {
-    document.querySelector('#selection-modal').classList.add('hide');
+    document.querySelector('#selection-modal-hide').classList.add('hide');
     document.querySelector('#full-workout-modal').classList.remove('hide');
   });
 
