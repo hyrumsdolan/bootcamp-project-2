@@ -1,17 +1,17 @@
-const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { User } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get('/', withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
+      attributes: { exclude: ["password"] },
+      order: [["name", "ASC"]],
     });
 
     const users = userData.map((project) => project.get({ plain: true }));
 
-    res.render('selection', {
+    res.render("selection", {
       users,
       logged_in: req.session.logged_in,
     });
@@ -20,58 +20,58 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/selection');
+    res.redirect("/selection");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
-router.get('/register', (req, res) => {
+router.get("/register", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/selection');
+    res.redirect("/selection");
     return;
   }
 
-  res.render('register');
+  res.render("register");
 });
 
-router.get('/selection', (req, res) => {
+router.get("/selection", (req, res) => {
   if (!req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
 
-  res.render('selection');
+  res.render("selection");
 });
 
-router.get('/fullWorkout', (req, res) => {
+router.get("/fullWorkout", (req, res) => {
   if (!req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
 
-  res.render('fullWorkout');
+  res.render("fullWorkout");
 });
 
-router.get('/singleWorkout', (req, res) => {
+router.get("/singleWorkout", (req, res) => {
   if (!req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
 
-  res.render('singleWorkout');
+  res.render("singleWorkout");
 });
 
-router.get('/completedWorkout', (req, res) => {
+router.get("/completedWorkout", (req, res) => {
   if (!req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
 
-  res.render('completedWorkout');
+  res.render("completedWorkout");
 });
 
 module.exports = router;

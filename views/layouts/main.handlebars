@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
+  <body>
+    {{{body}}}
+    {{#if logged_in}}
+      <button
+        class="logout-button"
+        id="logout-button"
+        type="submit"
+      >Logout</button>
+    {{/if}}
+  </body>
 
-<body>
-  {{{body}}}
-  {{#if logged_in}}
-  <button class="logout-button" id="logout-button" type="submit">Logout</button>
-  {{/if}}
-</body>
-
-
-<script src="/js/handlebars.js"></script>
-<script src="/js/logout.js"></script>
-
+  <script src="/js/logout.js"></script>
 
 </html>
