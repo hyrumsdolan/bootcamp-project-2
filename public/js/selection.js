@@ -126,6 +126,20 @@ function setEventListeners() {
 
   backFromSingletoFullbtn.addEventListener("click", () => {
     navigateFromTo("#single-workout-modal", "#full-workout-modal");
+
+    const setDivs = document.querySelectorAll(".sets .set");
+
+    setDivs.forEach((setDiv) => {
+      const weightInput = setDiv.querySelector(".weight");
+      const repsInput = setDiv.querySelector(".reps");
+      const repsLast = setDiv.querySelector(".last1");
+      const weightLast = setDiv.querySelector(".last2");
+  
+      weightInput.value = "";
+      repsInput.value = "";
+      repsLast.textContent = "last: " + "0";
+      weightLast.textContent = "last: " + "0";
+
   });
 
   document.querySelector("#instructions-btn").addEventListener("click", () => {
@@ -193,6 +207,7 @@ async function getSets(workoutName) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
+    console.log("Fetching sets for", workoutName);
 
     if (response.ok) {
       const { workoutDetails, sets } = await response.json();
