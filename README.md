@@ -1,30 +1,21 @@
 
 # Fitness Tracker
-## Collaborators
-[Hyrum Dolan](https://github.com/hyrumsdolan)
 
-[Jesse Nay](https://github.com/jessenay)
+## Table of Contents
+- [Description](#description)
+- [Deployed Site](#deployed-site)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Collaborators](#collaborators)
+- [Technology Used](#Language-and-Technology-used)
+- [License](#license)
 
-[Kyler Jansson](https://github.com/KylerJansson)
-
-[Maxwell Kaufman](https://github.com/MaxwellKaufman)
-
-[Travis Nielson](https://github.com/TNielson78)
-
-## Language and Technology used:
-HTML, CSS, JAVASCRIPT. Node.js, express, sequilize, JSON, prettier, and web API.
-## Deployed site 
-https://workout-fitness-tracker-ff2f5d2f6a1e.herokuapp.com/login
 ## Description
 Allows users to sign in, choose a workout type (Push/Pull/Legs). It randomly generates workouts for the user targeting the respective muscles and then stores all their sets and reps performed.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
+## Deployed site 
+https://workout-fitness-tracker-ff2f5d2f6a1e.herokuapp.com/login
 
-
-![Login Page](/public/images/login.png)
 ![Workout Page](/public/images/workout.png)
 ![Sets Page](/public/images/sets.png)
 
@@ -35,6 +26,21 @@ Allows users to sign in, choose a workout type (Push/Pull/Legs). It randomly gen
 
 ## Usage
 `npm start`
+
+## Collaborators
+
+[Jesse Nay](https://github.com/jessenay)
+
+[Hyrum Dolan](https://github.com/hyrumsdolan)
+
+[Kyler Jansson](https://github.com/KylerJansson)
+
+[Maxwell Kaufman](https://github.com/MaxwellKaufman)
+
+[Travis Nielson](https://github.com/TNielson78)
+
+## Language and Technology used:
+HTML, CSS, JAVASCRIPT. Node.js, express, sequilize, prettier, Nodemon and web API.
 
 ## License
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
