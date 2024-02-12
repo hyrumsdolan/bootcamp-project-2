@@ -8,10 +8,11 @@ Allows users to sign in, choose a workout type (Push/Pull/Legs). It randomly gen
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing](#contributing)
 
-![Login Page](path/to/image.jpg)
 
+![Login Page](/public/images/login.png)
+![Workout Page](/public/images/workout.png)
+![Sets Page](/public/images/sets.png)
 
 
 ## Installation
