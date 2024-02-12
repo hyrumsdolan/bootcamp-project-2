@@ -1,30 +1,27 @@
-# For Develoment
 
-### Update before final deploy
+# Fitness Tracker
 
-## Basic dev note
+## Description
+Allows users to sign in, choose a workout type (Push/Pull/Legs). It randomly generates workouts for the user targeting the respective muscles and then stores all their sets and reps performed.
 
-- using eslint and prettier
-  - Enforces "doubleQuotes" and tabs over spaces
-  - use "npm run format" and "npm run lint"
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
 
-## To-Do List
+![Login Page](path/to/image.jpg)
 
-- Decide on a project
 
-## Bugs
 
-### write bugs like so
+## Installation
+`npm install` 
+`node db/seed` 
 
-- Known bug and how to replicate
-  - Current workaround if applicable
+## Usage
+`npm start`
 
-## Resources
+## License
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+This project is licensed under the MIT license. For more information, see the [license link](https://opensource.org/licenses/MIT).
 
-### APIs Used
-
-- example
-
-### Relevant Documentation
-
-- example

@@ -119,14 +119,45 @@ function setEventListeners() {
       `<div> <div class="exercise"><p>Just one moment...</p></div> </div>`;
   });
 
-  finishSetsBtn.addEventListener("click", () => {
-    navigateFromTo("#single-workout-modal", "#full-workout-modal");
-    logSets();
-  });
+    finishSetsBtn.addEventListener("click", () => {
+      navigateFromTo("#single-workout-modal", "#full-workout-modal");
+      logSets();
+    });
 
-  backFromSingletoFullbtn.addEventListener("click", () => {
-    navigateFromTo("#single-workout-modal", "#full-workout-modal");
+    backFromSingletoFullbtn.addEventListener("click", () => {
+      navigateFromTo("#single-workout-modal", "#full-workout-modal");
 
+      const setDivs = document.querySelectorAll(".sets .set");
+
+      setDivs.forEach((setDiv) => {
+        const weightInput = setDiv.querySelector(".weight");
+        const repsInput = setDiv.querySelector(".reps");
+        const repsLast = setDiv.querySelector(".last1");
+        const weightLast = setDiv.querySelector(".last2");
+    
+        weightInput.value = "";
+        repsInput.value = "";
+        repsLast.textContent = "last: " + "0";
+        weightLast.textContent = "last: " + "0";
+      });
+    });
+
+    document.querySelector("#instructions-btn").addEventListener("click", () => {
+      let fullInstructions = document.querySelector(".exercise-description p")
+        .dataset.fullInstructions;
+
+      document.getElementById("full-instructions").textContent = fullInstructions;
+
+      document.getElementById("instructions-modal").style.display = "block";
+    });
+
+    document.querySelector(".close").addEventListener("click", () => {
+      document.getElementById("instructions-modal").style.display = "none";
+    });
+  }
+
+  async function logSets() {
+    const sets = [];
     const setDivs = document.querySelectorAll(".sets .set");
 
     setDivs.forEach((setDiv) => {
@@ -134,101 +165,71 @@ function setEventListeners() {
       const repsInput = setDiv.querySelector(".reps");
       const repsLast = setDiv.querySelector(".last1");
       const weightLast = setDiv.querySelector(".last2");
-  
+
+      sets.push({
+        weight: Number(weightInput.value),
+        reps: Number(repsInput.value),
+      });
       weightInput.value = "";
       repsInput.value = "";
       repsLast.textContent = "last: " + "0";
       weightLast.textContent = "last: " + "0";
-
-  });
-
-  document.querySelector("#instructions-btn").addEventListener("click", () => {
-    let fullInstructions = document.querySelector(".exercise-description p")
-      .dataset.fullInstructions;
-
-    document.getElementById("full-instructions").textContent = fullInstructions;
-
-    document.getElementById("instructions-modal").style.display = "block";
-  });
-
-  document.querySelector(".close").addEventListener("click", () => {
-    document.getElementById("instructions-modal").style.display = "none";
-  });
-}
-
-async function logSets() {
-  const sets = [];
-  const setDivs = document.querySelectorAll(".sets .set");
-
-  setDivs.forEach((setDiv) => {
-    const weightInput = setDiv.querySelector(".weight");
-    const repsInput = setDiv.querySelector(".reps");
-    const repsLast = setDiv.querySelector(".last1");
-    const weightLast = setDiv.querySelector(".last2");
-
-    sets.push({
-      weight: Number(weightInput.value),
-      reps: Number(repsInput.value),
-    });
-    weightInput.value = "";
-    repsInput.value = "";
-    repsLast.textContent = "last: " + "0";
-    weightLast.textContent = "last: " + "0";
-  });
-
-  try {
-    const response = await fetch("/api/exercise/logSets", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        workout_name: currentWorkout,
-        sets,
-      }),
     });
 
-    if (response.ok) {
-      const loggedSets = await response.json();
-      console.log("Sets logged successfully", loggedSets);
-    } else {
-      console.error("Sets log unsuccessful");
-      alert("Failed to log sets");
-    }
-  } catch (error) {
-    console.error("Sets log error:", error);
-  } finally {
-  }
-}
-
-async function getSets(workoutName) {
-  try {
-    const response = await fetch(`/api/exercise/getSets/${workoutName}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log("Fetching sets for", workoutName);
-
-    if (response.ok) {
-      const { workoutDetails, sets } = await response.json();
-      console.log("Fetch successful", workoutDetails, sets);
-
-      sets.forEach((set, index) => {
-        let setDiv = document.getElementById(`set${index + 1}`);
-
-        const repsLast = setDiv.querySelector(".last1");
-        const weightLast = setDiv.querySelector(".last2");
-        repsLast.textContent = "last: " + set.reps;
-        weightLast.textContent = "last: " + set.weight;
-        if (!set.reps) {
-          repsLast.value = 0;
-        }
-        if (!set.weight) {
-          weightLast.value = 0;
-        }
+    try {
+      const response = await fetch("/api/exercise/logSets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          workout_name: currentWorkout,
+          sets,
+        }),
       });
+
+      if (response.ok) {
+        const loggedSets = await response.json();
+        console.log("Sets logged successfully", loggedSets);
+      } else {
+        console.error("Sets log unsuccessful");
+        alert("Failed to log sets");
+      }
+    } catch (error) {
+      console.error("Sets log error:", error);
+    } finally {
     }
-  } catch (error) {
-    console.error("Fetch error:", error);
   }
-}
+
+  async function getSets(workoutName) {
+    try {
+      const response = await fetch(`/api/exercise/getSets/${workoutName}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("Fetching sets for", workoutName);
+
+      if (response.ok) {
+        const { workoutDetails, sets } = await response.json();
+        console.log("Fetch successful", workoutDetails, sets);
+
+        sets.forEach((set, index) => {
+          let setDiv = document.getElementById(`set${index + 1}`);
+
+          const repsLast = setDiv.querySelector(".last1");
+          const weightLast = setDiv.querySelector(".last2");
+          repsLast.textContent = "last: " + set.reps;
+          weightLast.textContent = "last: " + set.weight;
+          if (!set.reps) {
+            repsLast.value = 0;
+          }
+          if (!set.weight) {
+            weightLast.value = 0;
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  }
+
