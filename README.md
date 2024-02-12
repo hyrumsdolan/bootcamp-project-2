@@ -6,6 +6,8 @@ https://github.com/jessenay
 https://github.com/KylerJansson
 https://github.com/MaxwellKaufman
 https://github.com/TNielson78
+## Language and Technology used:
+HTML, CSS, JAVASCRIPT. Node.js, express, sequilize, JSON, prettier, and web API.
 ## Deployed site 
 https://workout-fitness-tracker-ff2f5d2f6a1e.herokuapp.com/login
 ## Description
