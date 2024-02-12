@@ -1,11 +1,16 @@
 
 # Fitness Tracker
 ## Collaborators
-https://github.com/hyrumsdolan
-https://github.com/jessenay
-https://github.com/KylerJansson
-https://github.com/MaxwellKaufman
-https://github.com/TNielson78
+[Hyrum Dolan](https://github.com/hyrumsdolan)
+
+[Jesse Nay](https://github.com/jessenay)
+
+[Kyler Jansson](https://github.com/KylerJansson)
+
+[Maxwell Kaufman](https://github.com/MaxwellKaufman)
+
+[Travis Nielson](https://github.com/TNielson78)
+
 ## Language and Technology used:
 HTML, CSS, JAVASCRIPT. Node.js, express, sequilize, JSON, prettier, and web API.
 ## Deployed site 
