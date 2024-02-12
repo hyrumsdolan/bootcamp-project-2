@@ -1,6 +1,13 @@
 
 # Fitness Tracker
-
+## Collaborators
+https://github.com/hyrumsdolan
+https://github.com/jessenay
+https://github.com/KylerJansson
+https://github.com/MaxwellKaufman
+https://github.com/TNielson78
+## Deployed site 
+https://workout-fitness-tracker-ff2f5d2f6a1e.herokuapp.com/login
 ## Description
 Allows users to sign in, choose a workout type (Push/Pull/Legs). It randomly generates workouts for the user targeting the respective muscles and then stores all their sets and reps performed.
 
