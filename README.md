@@ -5,7 +5,6 @@
 - [Description](#description)
 - [Deployed Site](#deployed-site)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Collaborators](#collaborators)
 - [Technology Used](#Language-and-Technology-used)
 - [License](#license)
@@ -21,11 +20,21 @@ https://workout-fitness-tracker-ff2f5d2f6a1e.herokuapp.com/login
 
 
 ## Installation
-`npm install` 
-`node db/seed` 
+To use on you own machine instead of the deployed app
 
-## Usage
+`npm install` 
+
+Create and .env with:
+`DB_NAME='fitness_db'
+DB_USER='root'
+DB_PASSWORD=''
+API_KEY: 'VVG6lFTb03F54dvSREwgaRIBmNP8RmfMGf6p1VYN'
+SESSION_SECRET='Super secret secret`
+
+`node db/seed`
+
 `npm start`
+
 
 ## Collaborators
 
