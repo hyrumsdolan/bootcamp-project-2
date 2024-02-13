@@ -25,11 +25,13 @@ To use on you own machine instead of the deployed app
 `npm install` 
 
 Create and .env with:
-`DB_NAME='fitness_db'
+```
+DB_NAME='fitness_db'
 DB_USER='root'
 DB_PASSWORD=''
-API_KEY: 'VVG6lFTb03F54dvSREwgaRIBmNP8RmfMGf6p1VYN'
-SESSION_SECRET='Super secret secret`
+API_KEY: '' //fill with API key from Exercise API from API Ninja
+SESSION_SECRET=''
+```
 
 `node db/seed`
 
